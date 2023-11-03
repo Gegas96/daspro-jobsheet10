@@ -8,7 +8,6 @@ public class BioskopWithScanner11 {
         int baris = 0, kolom = 0, menu;
         String nama, next;
         String[][] penonton = new String[4][2];
-        
 
         while (true) {
             System.out.println();
@@ -18,7 +17,8 @@ public class BioskopWithScanner11 {
             System.out.println("3. Exit");
             System.out.print("Pilih (1/2/3): ");
             menu = input11.nextInt();
-
+            System.out.println();
+            
             while (true) {
                 if (menu == 1) {
                     System.out.print("Masukkan nama: ");
@@ -33,11 +33,11 @@ public class BioskopWithScanner11 {
                         System.out.println("Maaf nomor baris tidak tersedia");
                         continue;
                     }
-                    if (kolom-1 >= penonton[baris-1].length) {
+                    if (kolom - 1 >= penonton[baris - 1].length) {
                         System.out.println("Maaf nomor kolom tidak tersedia");
                         continue;
                     }
-                    if (penonton[baris-1][kolom-1] != null) {
+                    if (penonton[baris - 1][kolom - 1] != null) {
                         System.out.println("Maaf kursi yang anda pilih telah terisi");
                         System.out.println("Silakan isi baris dan kolom kembali");
                         continue;
@@ -47,10 +47,14 @@ public class BioskopWithScanner11 {
 
                     System.out.print("Input penonton lainnya? (y/n): ");
                     next = input11.nextLine();
-    
+
+                    if (next.equalsIgnoreCase("y")) {
+                        continue;
+                    }
                     if (next.equalsIgnoreCase("n")) {
                         break;
                     }
+
                 } else if (menu == 2) {
                     for (int i = 0; i < penonton.length; i++) {
                         String[] penontonBaris = penonton[i];
@@ -59,15 +63,18 @@ public class BioskopWithScanner11 {
                                 penontonBaris[j] = "***";
                             }
                         }
+                        
                         System.out.println("Penonton pada baris ke-" + (i + 1) + " : " + String.join(", ", penonton[i]));
                     }
                     break;
                 } else if (menu == 3) {
                     System.out.println("Terima kasih telah datang di bioskop kami.");
+                    System.out.println();
+                    return;
                 }
                 break;
             }
-            break;
+            
         }
     }
 }
